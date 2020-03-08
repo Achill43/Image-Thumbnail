@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books</title>
+    {% load book_thumbnail %}
+</head>
+<body>
+    <p></p>
+    <ul>
+        {% for book in allBooks %}
+            <li>
+                <h3>Название: {{book.name}}</h3>
+                {% book_thumbnail book.previesImg.path as thumbnail %}
+                <img src="{{ thumbnail }}" alt="">
+                <h4>Цена: {{book.price}}</h4>
+                <h4>Автор: {{book.author.name}}</h4>
+                <p>Жанр: {{book.genre}}</p>
+                <p>Описание:</p>
+                <p>{{book.description}}</p>
+                <p>
+                    <a href="">{{book.category.name}}</a>
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
